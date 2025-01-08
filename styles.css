@@ -1,95 +1,117 @@
-/* Basic Reset */
-* {
+/* Catppuccin Color Palette */
+:root {
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --overlay2: #9399b2;
+  --overlay1: #7f849c;
+  --overlay0: #6c7086;
+  --surface2: #585b70;
+  --surface1: #45475a;
+  --surface0: #313244;
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+}
+
+body {
+  background-color: var(--base);
+  color: var(--text);
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* Body Styling */
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f4f4f4;
-  color: #333;
-  padding: 20px;
-}
-
-/* Header Styling */
 header {
-  background: #333;
-  color: #fff;
-  padding: 10px 0;
-  text-align: center;
+  background-color: var(--mantle);
+  padding: 1rem;
 }
 
-header nav ul {
+nav ul {
   list-style: none;
   padding: 0;
+  display: flex;
+  justify-content: space-around;
 }
 
-header nav ul li {
-  display: inline;
-  margin: 0 10px;
-}
-
-header nav ul li a {
-  color: #fff;
+nav a {
+  color: var(--text);
   text-decoration: none;
+  font-weight: bold;
 }
 
-/* Section Styling */
+nav a:hover {
+  color: var(--blue);
+}
+
 section {
-  margin: 20px 0;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
 }
 
-section h2 {
-  margin-bottom: 10px;
+h1, h2, h3 {
+  color: var(--lavender);
 }
 
-/* Project Styling */
+p {
+  color: var(--subtext1);
+}
+
 .project {
-  margin-bottom: 20px;
+  background-color: var(--surface0);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
-/* Form Styling */
 form {
   display: flex;
   flex-direction: column;
 }
 
-form label {
-  margin-bottom: 5px;
+label {
+  margin-top: 1rem;
+  color: var(--subtext0);
 }
 
-form input, form textarea {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+input, textarea {
+  background-color: var(--surface1);
+  border: 1px solid var(--surface2);
+  color: var(--text);
+  padding: 0.5rem;
+  border-radius: 4px;
 }
 
-form button {
-  padding: 10px;
-  background: #333;
-  color: #fff;
+button {
+  background-color: var(--blue);
+  color: var(--crust);
   border: none;
-  border-radius: 5px;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-top: 1rem;
   cursor: pointer;
 }
 
-form button:hover {
-  background: #555;
+button:hover {
+  background-color: var(--sapphire);
 }
 
-/* Footer Styling */
 footer {
+  background-color: var(--mantle);
   text-align: center;
-  margin-top: 20px;
-  padding: 10px 0;
-  background: #333;
-  color: #fff;
+  padding: 1rem;
+  color: var(--overlay1);
 }
