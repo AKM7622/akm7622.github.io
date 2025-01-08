@@ -68,6 +68,7 @@ h1, h2, h3 {
 
 p {
   color: var(--subtext1);
+  font-size: 17px;
 }
 
 .project {
