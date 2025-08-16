@@ -22,6 +22,7 @@ function fetchData() {
 }
 
 function renderBoard() {
+  const board = document.getElementById("board");
   board.innerHTML = "";
 
   items.forEach((item, index) => {
@@ -42,6 +43,14 @@ function renderBoard() {
   });
 }
 
+function deleteItem(index) {
+  if (confirm("Are you sure this report is resolved and should be deleted?")) {
+    items.splice(index, 1);  // remove from list
+    localStorage.setItem("items", JSON.stringify(items)); // persist
+    renderBoard();
+  }
+}
+
 search.addEventListener("input", e => {
     const keyword = e.target.value.toLowerCase();
     const filtered = items.filter(i =>
@@ -52,15 +61,5 @@ search.addEventListener("input", e => {
     );
     displayItems(filtered);
 });
-
-// Delete item
-function deleteItem(index) {
-  if (confirm("Are you sure this report is resolved and should be deleted?")) {
-    items.splice(index, 1);  // remove from list
-    localStorage.setItem("items", JSON.stringify(items)); // persist
-    renderBoard();
-  }
-}
-
 
 fetchData();
