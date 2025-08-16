@@ -49,4 +49,35 @@ search.addEventListener("input", e => {
     displayItems(filtered);
 });
 
+function renderBoard() {
+  board.innerHTML = "";
+
+  items.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.className = `item ${item.status}`;
+
+    div.innerHTML = `
+      <h3>${item.name}</h3>
+      <p class="description">${item.description}</p>
+      ${item.description.length > 100 ? `<span class="read-more" onclick="toggleReadMore(this)">Read More</span>` : ""}
+      <p><strong>Status:</strong> ${item.status}</p>
+      <p><strong>Contact:</strong> ${item.contact}</p>
+      <p>${item.date}</p>
+      <button class="delete-btn" onclick="deleteItem(${index})">Delete</button>
+    `;
+
+    board.appendChild(div);
+  });
+}
+
+// Delete item
+function deleteItem(index) {
+  if (confirm("Are you sure this report is resolved and should be deleted?")) {
+    items.splice(index, 1);  // remove from list
+    localStorage.setItem("items", JSON.stringify(items)); // persist
+    renderBoard();
+  }
+}
+
+
 fetchData();
