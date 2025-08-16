@@ -21,34 +21,6 @@ function fetchData() {
         });
 }
 
-function displayItems(list) {
-    board.innerHTML = "";
-    list.forEach(item => {
-        if (!item.name) return; // skip empty rows
-        const div = document.createElement("div");
-        div.className = `item ${item.status}`;
-        div.innerHTML = `
-      <h3>${item.name}</h3>
-      <p>${item.description}</p>
-      <p><strong>Status:</strong> ${item.status}</p>
-      <p><strong>Contact:</strong> ${item.contact}</p>
-      <p><small>${item.date}</small></p>
-    `;
-        board.appendChild(div);
-    });
-}
-
-search.addEventListener("input", e => {
-    const keyword = e.target.value.toLowerCase();
-    const filtered = items.filter(i =>
-        (i.name || "").toLowerCase().includes(keyword) ||
-        (i.description || "").toLowerCase().includes(keyword) ||
-        (i.status || "").toLowerCase().include(keyword) ||
-        (i.date || "").toLowerCase().include(keyword)
-    );
-    displayItems(filtered);
-});
-
 function renderBoard() {
   board.innerHTML = "";
 
@@ -69,6 +41,17 @@ function renderBoard() {
     board.appendChild(div);
   });
 }
+
+search.addEventListener("input", e => {
+    const keyword = e.target.value.toLowerCase();
+    const filtered = items.filter(i =>
+        (i.name || "").toLowerCase().includes(keyword) ||
+        (i.description || "").toLowerCase().includes(keyword) ||
+        (i.status || "").toLowerCase().include(keyword) ||
+        (i.date || "").toLowerCase().include(keyword)
+    );
+    displayItems(filtered);
+});
 
 // Delete item
 function deleteItem(index) {
