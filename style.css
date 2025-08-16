@@ -1,15 +1,22 @@
-/* Light & Modern Theme */
+/* Catppuccin Mocha Dark Theme */
 :root {
-    --bg: #f9fafb;
-    --card: #ffffff;
-    --muted: #6b7280;
-    --text: #111827;
-    --accent: #2563eb;
-    --accent-2: #16a34a;
-    --danger: #dc2626;
-    --ring: rgba(37, 99, 235, .35);
+    --bg: #1e1e2e;
+    /* Base */
+    --card: #181825;
+    /* Mantle */
+    --muted: #6c7086;
+    /* Subtext0 */
+    --text: #cdd6f4;
+    /* Text */
+    --accent: #89b4fa;
+    /* Blue */
+    --accent-2: #a6e3a1;
+    /* Green */
+    --danger: #f38ba8;
+    /* Red */
+    --ring: rgba(137, 180, 250, .35);
     --radius: 12px;
-    --shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    --shadow: 0 4px 12px rgba(0, 0, 0, .4);
     --transition: all .25s ease;
 }
 
@@ -48,8 +55,8 @@ header {
     top: 0;
     z-index: 10;
     backdrop-filter: blur(8px);
-    background: #ffffffcc;
-    border-bottom: 1px solid #e5e7eb;
+    background: #181825cc;
+    border-bottom: 1px solid #313244;
     transition: var(--transition);
 }
 
@@ -76,7 +83,7 @@ header {
     place-items: center;
     border-radius: 8px;
     background: var(--accent);
-    color: #fff;
+    color: var(--bg);
     font-weight: 900;
     box-shadow: var(--shadow);
 }
@@ -91,30 +98,42 @@ header {
     gap: 8px;
     padding: 10px 14px;
     border-radius: var(--radius);
-    border: 1px solid #d1d5db;
-    background: #f3f4f6;
+    border: 1px solid #313244;
+    background: #181825;
     color: var(--text);
     cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
     transition: var(--transition);
 }
 
 .btn:hover {
-    background: #e5e7eb;
-    transform: translateY(-1px);
+    background: #313244;
 }
 
 .btn.primary {
     background: var(--accent);
     border-color: var(--accent);
-    color: #fff;
+    color: #1e1e2e;
     font-weight: 600;
+}
+
+.btn.primary:hover {
+    background: transparent;
+    color: var(--accent);
 }
 
 .btn.green {
     background: var(--accent-2);
     border-color: var(--accent-2);
-    color: #fff;
+    color: #1e1e2e;
     font-weight: 600;
+}
+
+.btn.green:hover {
+    background: transparent;
+    color: var(--accent-2);
 }
 
 /* Hero */
@@ -154,8 +173,8 @@ header {
     flex: 1;
     padding: 12px 14px;
     border-radius: var(--radius);
-    border: 1px solid #d1d5db;
-    background: #fff;
+    border: 1px solid #313244;
+    background: var(--card);
     color: var(--text);
     outline: none;
     transition: var(--transition);
@@ -168,10 +187,11 @@ header {
 }
 
 .chip {
-    padding: 8px 12px;
-    border-radius: 999px;
-    border: 1px solid #d1d5db;
-    background: #f9fafb;
+    padding: 8px 20px;
+    border-radius: var(--radius);
+    border: 1px solid #313244;
+    background: var(--card);
+    color: var(--text);
     cursor: pointer;
     transition: var(--transition);
 }
@@ -179,7 +199,7 @@ header {
 .chip.active {
     background: var(--accent);
     border-color: var(--accent);
-    color: #fff;
+    color: #1e1e2e;
 }
 
 /* Grid */
@@ -192,7 +212,7 @@ header {
 
 .card {
     background: var(--card);
-    border: 1px solid #e5e7eb;
+    border: 1px solid #313244;
     border-radius: var(--radius);
     padding: 16px;
     box-shadow: var(--shadow);
@@ -204,7 +224,7 @@ header {
 
 .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, .1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .6);
 }
 
 .badge {
@@ -213,20 +233,20 @@ header {
     gap: 6px;
     font-size: 12px;
     padding: 6px 10px;
-    border-radius: 999px;
+    border-radius: var(--radius);
     font-weight: 500;
 }
 
 .badge.lost {
-    background: #fee2e2;
-    color: #b91c1c;
-    border: 1px solid #fca5a5;
+    background: #4c2f32;
+    color: #f38ba8;
+    border: 1px solid #f38ba8;
 }
 
 .badge.found {
-    background: #dcfce7;
-    color: #15803d;
-    border: 1px solid #86efac;
+    background: #2f3e32;
+    color: #a6e3a1;
+    border: 1px solid #a6e3a1;
 }
 
 .title-sm {
@@ -245,8 +265,8 @@ header {
 }
 
 .meta div {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
+    background: var(--bg);
+    border: 1px solid #313244;
     border-radius: var(--radius);
     padding: 8px 10px;
     transition: var(--transition);
@@ -269,8 +289,9 @@ header {
     text-align: center;
     color: var(--muted);
     padding: 24px;
-    border: 1px dashed #d1d5db;
+    border: 1px dashed #313244;
     border-radius: var(--radius);
+    background: var(--card);
 }
 
 footer {
@@ -282,12 +303,12 @@ footer {
 /* Modal */
 dialog {
     border: none;
-    border-radius: 18px;
+    border-radius: var(--radius);
     padding: 0;
-    background: #fff;
+    background: var(--card);
     color: var(--text);
     width: min(560px, 92vw);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, .2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .6);
     overflow: hidden;
     transition: var(--transition);
 }
@@ -297,7 +318,7 @@ dialog {
     align-items: center;
     justify-content: space-between;
     padding: 14px 16px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #313244;
 }
 
 .modal-body {
