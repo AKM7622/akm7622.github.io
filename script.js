@@ -42,7 +42,9 @@ search.addEventListener("input", e => {
     const keyword = e.target.value.toLowerCase();
     const filtered = items.filter(i =>
         (i.name || "").toLowerCase().includes(keyword) ||
-        (i.description || "").toLowerCase().includes(keyword)
+        (i.description || "").toLowerCase().includes(keyword) ||
+        (i.status || "").toLowerCase().include(keyword) ||
+        (i.date || "").toLowerCase().include(keyword)
     );
     displayItems(filtered);
 });
