@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lost & Found Board</title>
+    <meta name="description" content="Simple Lost & Found board powered by a Google Sheet (CSV)." />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrap nav">
+            <a class="brand" href="#">
+                <span class="logo">L&F</span>
+                <span>Lost & Found Board</span>
+            </a>
+            <span class="navspacer"></span>
+            <button id="btnView" class="btn">View Board</button>
+            <a id="btnReportLost" class="btn primary" target="_blank" rel="noopener">Report Lost Item</a>
+            <a id="btnReportFound" class="btn green" target="_blank" rel="noopener">Report Found Item</a>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="hero">
+            <h1 class="title">Help reunite people with their belongings</h1>
+            <p class="subtitle">This board is powered by a public Google Sheet. Add new entries via the linked Google
+                Forms; they'll appear here automatically once the sheet updates.</p>
+        </section>
+
+        <section class="controls" aria-label="board controls">
+            <div class="searchbar" role="search">
+                <input id="q" class="input" type="search"
+                    placeholder="Search items… (title, description, location, reporter)" />
+                <button id="clear" class="btn" title="Clear search">Clear</button>
+            </div>
+            <div class="filters">
+                <button class="chip active" data-filter="all">All</button>
+                <button class="chip" data-filter="lost">Lost</button>
+                <button class="chip" data-filter="found">Found</button>
+                <select id="sort" class="select" title="Sort">
+                    <option value="date-desc">Newest first</option>
+                    <option value="date-asc">Oldest first</option>
+                    <option value="title-asc">Title A→Z</option>
+                    <option value="title-desc">Title Z→A</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="board" class="grid" aria-live="polite"></section>
+        <div id="empty" class="empty" hidden>No items match your filters. Try clearing search or switching tabs.</div>
+    </main>
+
+    <footer>
+        © <span id="year"></span> Lost & Found Board. Bringing communities together.
+    </footer>
+
+    <dialog id="itemModal">
+        <div class="modal-header">
+            <div id="modalTitle" class="title-sm"></div>
+            <button class="close" aria-label="Close">✕</button>
+        </div>
+        <div class="modal-body">
+            <div id="modalDesc"></div>
+            <div class="meta">
+                <div><b>Status</b><span id="modalStatus"></span></div>
+                <div><b>Location</b><span id="modalLocation"></span></div>
+                <div><b>Date</b><span id="modalDate"></span></div>
+                <div><b>Reported By</b><span id="modalReporter"></span></div>
+                <div style="grid-column: 1 / -1"><b>Contact</b><span id="modalContact"></span></div>
+            </div>
+        </div>
+    </dialog>
+    <script src="script.js"></script>
+</body>
+
+</html>
