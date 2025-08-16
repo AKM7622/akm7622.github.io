@@ -83,3 +83,17 @@ header button:hover {
   display: block;
   margin-top: 0.5rem;
 }
+
+.delete-btn {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #e60000;
+}
