@@ -21,24 +21,21 @@ function fetchData() {
         });
 }
 
-function renderBoard() {
-  const board = document.getElementById("board");
+function displayItems(list) {
   board.innerHTML = "";
-
-  items.forEach((item, index) => {
+  list.forEach(item => {
+    if (!item.name) return; // skip empty rows
     const div = document.createElement("div");
     div.className = `item ${item.status}`;
-
     div.innerHTML = `
       <h3>${item.name}</h3>
-      <p class="description">${item.description}</p>
+      <p>${item.description}</p>
       ${item.description.length > 100 ? `<span class="read-more" onclick="toggleReadMore(this)">Read More</span>` : ""}
       <p><strong>Status:</strong> ${item.status}</p>
       <p><strong>Contact:</strong> ${item.contact}</p>
-      <p>${item.date}</p>
-      <button class="delete-btn" onclick="deleteItem(${index})">Delete</button>
+      <p><small>${item.date}</small></p>
+      <button class="delete-btn" onclick="deleteItem(${index})">🗑 Delete</button>
     `;
-
     board.appendChild(div);
   });
 }
