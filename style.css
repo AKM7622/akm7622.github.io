@@ -180,6 +180,11 @@ header {
     transition: var(--transition);
 }
 
+.input:hover {
+    border-color: var(--accent);
+    background-color: #313244;
+}
+
 .input:focus,
 .select:focus {
     border-color: var(--accent);
@@ -194,6 +199,11 @@ header {
     color: var(--text);
     cursor: pointer;
     transition: var(--transition);
+}
+
+.chip:hover {
+    border-color: var(--accent);
+    background-color: #313244;
 }
 
 .chip.active {
@@ -355,4 +365,31 @@ dialog {
     .grid {
         grid-template-columns: repeat(3, 1fr);
     }
+}
+
+.select {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    border: 1px solid #313244;
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+    transition: var(--transition);
+    appearance: none;
+    /* Removes native arrow styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23cdd6f4' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+    padding-right: 40px;
+    /* Room for the custom arrow */
+    cursor: pointer;
+}
+
+.select:hover {
+    border-color: var(--accent);
+    background-color: #313244;
 }
