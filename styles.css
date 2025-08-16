@@ -63,3 +63,23 @@ header button:hover {
 .found {
   border-left: 6px solid green;
 }
+
+/* LIMIT DESCRIPTION HEIGHT */
+.item .description {
+  max-height: 4.5em;       /* ~3 lines */
+  overflow: hidden;
+  position: relative;
+}
+
+.item.expanded .description {
+  max-height: none;        /* show full text */
+}
+
+/* READ MORE BUTTON */
+.read-more {
+  color: #007BFF;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 0.5rem;
+}
