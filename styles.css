@@ -1,118 +1,65 @@
-/* Catppuccin Color Palette */
-:root {
-  --rosewater: #f5e0dc;
-  --flamingo: #f2cdcd;
-  --pink: #f5c2e7;
-  --mauve: #cba6f7;
-  --red: #f38ba8;
-  --maroon: #eba0ac;
-  --peach: #fab387;
-  --yellow: #f9e2af;
-  --green: #a6e3a1;
-  --teal: #94e2d5;
-  --sky: #89dceb;
-  --sapphire: #74c7ec;
-  --blue: #89b4fa;
-  --lavender: #b4befe;
-  --text: #cdd6f4;
-  --subtext1: #bac2de;
-  --subtext0: #a6adc8;
-  --overlay2: #9399b2;
-  --overlay1: #7f849c;
-  --overlay0: #6c7086;
-  --surface2: #585b70;
-  --surface1: #45475a;
-  --surface0: #313244;
-  --base: #1e1e2e;
-  --mantle: #181825;
-  --crust: #11111b;
-}
-
 body {
-  background-color: var(--base);
-  color: var(--text);
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
   margin: 0;
   padding: 0;
 }
 
 header {
-  background-color: var(--mantle);
+  background: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: space-around;
+header h1 {
+  margin: 0;
 }
 
-nav a {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  color: var(--blue);
-}
-
-section {
-  padding: 2rem;
-}
-
-h1, h2, h3 {
-  color: var(--lavender);
-}
-
-p {
-  color: var(--subtext1);
-  font-size: 17px;
-}
-
-.project {
-  background-color: var(--surface0);
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-top: 1rem;
-  color: var(--subtext0);
-}
-
-input, textarea {
-  background-color: var(--surface1);
-  border: 1px solid var(--surface2);
-  color: var(--text);
-  padding: 0.5rem;
-  border-radius: 4px;
-}
-
-button {
-  background-color: var(--blue);
-  color: var(--crust);
+header button {
+  background: #4CAF50;
   border: none;
-  padding: 0.75rem;
-  border-radius: 4px;
-  margin-top: 1rem;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 1rem;
 }
 
-button:hover {
-  background-color: var(--sapphire);
+header button:hover {
+  background: #45a049;
 }
 
-footer {
-  background-color: var(--mantle);
-  text-align: center;
+.search-box {
   padding: 1rem;
-  color: var(--overlay1);
+  text-align: center;
+}
+
+.search-box input {
+  padding: 0.5rem;
+  width: 250px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.item {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.lost {
+  border-left: 6px solid red;
+}
+
+.found {
+  border-left: 6px solid green;
 }
