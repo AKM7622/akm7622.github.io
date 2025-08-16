@@ -1,7 +1,6 @@
-const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTIZDBgdpifoBo-nowTeGDgf4nr_N8RMqtmQTgUZfW-Eet4NF26bprwnCNNIkUg4XZoRtkGjty7Lltz/pub?output=csv"; // e.g., https://docs.google.com/spreadsheets/d/.../pub?output=csv
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTIZDBgdpifoBo-nowTeGDgf4nr_N8RMqtmQTgUZfW-Eet4NF26bprwnCNNIkUg4XZoRtkGjty7Lltz/pub?gid=1665015898&single=true&output=csv";
 const FORM_LOST_URL = "https://forms.gle/DTwq9ViT6AW7a8dK8";
 const FORM_FOUND_URL = "https://forms.gle/7N9KFK6QZqMp8oCm7";
-
 // Hook up report buttons (hidden if no links provided)
 const lostBtn = document.getElementById('btnReportLost');
 const foundBtn = document.getElementById('btnReportFound');
