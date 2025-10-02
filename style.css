@@ -1,17 +1,11 @@
-/* Everforest-inspired light theme */
+/* Light theme (default) */
 :root {
   --bg: #fefbec;
-  /* light cream background */
   --bg-alt: #e6e2d3;
-  /* slightly darker cream for panels/cards */
   --fg: #5c5a43;
-  /* dark brownish text */
   --accent: #7aa673;
-  /* muted green for highlights */
   --accent-alt: #d27e70;
-  /* soft red/orange accent */
   --muted: #6c8c7a;
-  /* desaturated green/cyan for secondary text */
 }
 
 * {
@@ -257,5 +251,17 @@ footer {
 
   .nav-links.active {
     display: flex;
+  }
+}
+
+/* Dark theme overrides using prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #2b3339;
+    --bg-alt: #323c41;
+    --fg: #d3c6aa;
+    --accent: #a7c080;
+    --accent-alt: #e67e80;
+    --muted: #7fbbb3;
   }
 }
