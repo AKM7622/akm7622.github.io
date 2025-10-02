@@ -1,80 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Lost & Found Board</title>
-    <meta name="description" content="Simple Lost & Found board powered by a Google Sheet (CSV)." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash Majumdar | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Navbar -->
     <header>
-        <div class="wrap nav">
-            <a class="brand" href="#">
-                <span class="logo">CT</span>
-                <span>Lost & Found Board</span>
-            </a>
-            <span class="navspacer"></span>
-            <button id="btnView" class="btn">View Board</button>
-            <a id="btnReportLost" class="btn primary" target="_blank" rel="noopener">Report Lost Item</a>
-            <a id="btnReportFound" class="btn green" target="_blank" rel="noopener">Report Found Item</a>
-        </div>
+        <nav class="navbar">
+            <div class="logo">Akash Majumdar</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
     </header>
 
-    <main class="wrap">
-        <section class="hero">
-            <h1 class="title">Help reunite people with their belongings</h1>
-            <p class="subtitle">This board is powered by a public Google Sheet. Add new entries via the linked Google
-                Forms; they'll appear here automatically once the sheet updates.</p>
-            <p class="subtitle">Note: Reports may take upto 5 minutes to appear.</p>
-        </section>
+    <!-- Home -->
+    <section id="home" class="section home fade-in">
+        <h1>Tech Enthusiast, Coder, and Tinkerer</h1>
+        <p>Welcome to my digital space. Check out my work and connect with me!</p>
+        <a href="#projects" class="cta">Check out my work</a>
+    </section>
 
-        <section class="controls" aria-label="board controls">
-            <div class="searchbar" role="search">
-                <input id="q" class="input" type="search"
-                    placeholder="Search items… (title, description, location, reporter)" />
-                <button id="clear" class="btn" title="Clear search">Clear</button>
-            </div>
-            <div class="filters">
-                <button class="chip active" data-filter="all">All</button>
-                <button class="chip" data-filter="lost">Lost</button>
-                <button class="chip" data-filter="found">Found</button>
-                <select id="sort" class="select" title="Sort">
-                    <option value="date-newest">Newest first</option>
-                    <option value="date-oldest">Oldest first</option>
-                    <option value="title-asc">Title A→Z</option>
-                    <option value="title-desc">Title Z→A</option>
-                </select>
-            </div>
-        </section>
+    <!-- About -->
+    <section id="about" class="section fade-in">
+        <h2>About Me</h2>
+        <p>Hi! I'm Akash Majumdar, a 2nd year B.Tech CSE student from India.
+            I love coding, tinkering with operating systems, exploring hardware, and immersing myself in anime and
+            gaming.</p>
+    </section>
 
-        <section id="board" class="grid" aria-live="polite"></section>
-        <div id="empty" class="empty" hidden>No items match your filters. Try clearing search or switching tabs.</div>
-    </main>
+    <!-- Skills -->
+    <section id="skills" class="section fade-in">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Python</li>
+            <li>C</li>
+            <li>C++</li>
+            <li>OS Tinkering</li>
+            <li>Hardware Knowledge</li>
+        </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section fade-in">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="card">
+                <h3>KrishiRent</h3>
+                <p>KrishiRent is a platform that connects farmers who own unused agricultural assets with farmers who need them on rent, making farming more affordable and efficient.</p>
+                <a href="https://krishirent.onrender.com/" target="_blank">Check it out!</a>
+            </div>
+            <div class="card">
+                <h3>Future Work</h3>
+                <p>Exciting projects under progress...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="section fade-in">
+        <h2>Blog / Updates</h2>
+        <p>Coming soon...</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section fade-in">
+        <h2>Contact Me</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+        <div class="socials">
+            <a href="https://github.com/akm7622" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+        </div>
+        <a href="#contact" class="cta">Let's connect</a>
+    </section>
 
     <footer>
-        © <span id="year"></span> Lost & Found Board. Bringing communities together.
+        <p>© 2025 Akash Majumdar. Built with ❤️ and Everforest vibes.</p>
     </footer>
-
-    <dialog id="itemModal">
-        <div class="modal-header">
-            <div id="modalTitle" class="title-sm"></div>
-            <button class="close" aria-label="Close">✕</button>
-        </div>
-        <div class="modal-body">
-            <div id="modalDesc"></div>
-            <div class="meta">
-                <div><b>Status</b><span id="modalStatus"></span></div>
-                <div><b>Location</b><span id="modalLocation"></span></div>
-                <div><b>Date</b><span id="modalDate"></span></div>
-                <div><b>Reported By</b><span id="modalReporter"></span></div>
-                <div style="grid-column: 1 / -1"><b>Contact</b><span id="modalContact"></span></div>
-            </div>
-        </div>
-    </dialog>
-    <script src="script.js"></script>
 </body>
 
 </html>
