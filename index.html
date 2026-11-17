@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Akash Majumdar — Computer Science Engineering student, systems tinkerer, coder, and low-level software enthusiast. Technical blueprint portfolio.">
+  <title>AKASH MAJUMDAR // SPECIFICATION DOSSIER</title>
+  
+  <!-- Color Scheme & FOUC Prevention as per modern-web-guidance -->
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("cad-theme");
+      if (savedTheme === "dark" || savedTheme === "light") {
+        document.querySelector('meta[name="color-scheme"]').setAttribute("content", savedTheme);
+      }
+    } catch (e) {}
+  </script>
+
+  <!-- Typography: JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body class="blueprint-canvas">
+
+  <!-- TOP TELEMETRY RULER -->
+  <div class="telemetry-bar">
+    <div class="telemetry-inner">
+      <div class="telemetry-item">
+        <span class="telemetry-status-dot">●</span>
+        <span class="telemetry-label">SYS_STATUS:</span>
+        <span class="telemetry-val">OPERATIONAL</span>
+      </div>
+      <div class="telemetry-item">
+        <span class="telemetry-label">LOCAL_TIME:</span>
+        <span id="telemetry-local-time" class="telemetry-val">--:--:--</span>
+      </div>
+      <div class="telemetry-item">
+        <span class="telemetry-label">UTC:</span>
+        <span id="telemetry-utc-time" class="telemetry-val">--:--:-- Z</span>
+      </div>
+      <div class="telemetry-item">
+        <span class="telemetry-label">COORDS:</span>
+        <span class="telemetry-val">22.57°N 88.36°E // IND</span>
+      </div>
+      <div class="telemetry-item telemetry-controls">
+        <button id="theme-toggle" class="cad-btn cad-btn-xs" aria-label="Toggle dark and light theme" title="Toggle Theme (Key: T)">
+          [ THEME: <span id="theme-status-text">DARK</span> ]
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE HEADER & HUD NAVIGATION -->
+  <header class="cad-header">
+    <div class="header-container">
+      <div class="brand-block">
+        <div class="callsign">SPEC-DOC // AKM-7622</div>
+        <h1 class="brand-title">AKASH MAJUMDAR</h1>
+      </div>
+      <nav class="cad-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link" data-key="1"><span class="nav-num">01</span> ABOUT</a></li>
+          <li><a href="#skills" class="nav-link" data-key="2"><span class="nav-num">02</span> MATRIX</a></li>
+          <li><a href="#projects" class="nav-link" data-key="3"><span class="nav-num">03</span> PROJECTS</a></li>
+          <li><a href="#experience" class="nav-link" data-key="4"><span class="nav-num">04</span> LOGS</a></li>
+          <li><a href="#contact" class="nav-link" data-key="5"><span class="nav-num">05</span> DISPATCH</a></li>
+        </ul>
+      </nav>
+      <div class="key-hints" title="Press 1-5 to navigate sections, T to toggle theme">
+        <span class="key-badge">KEYS 1-5</span>
+        <span class="key-badge">[T] THEME</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN DOSSIER CONTAINER -->
+  <main class="cad-main">
+
+    <!-- HERO / IDENTIFICATION SECTION -->
+    <section id="about" class="cad-section cad-hero">
+      <div class="section-tag">[ SECTION // 01.00 ] &mdash; SYSTEM IDENTIFICATION</div>
+      
+      <div class="hero-grid">
+        <div class="hero-primary cad-card">
+          <div class="card-corner tl">+</div>
+          <div class="card-corner tr">+</div>
+          <div class="card-corner bl">+</div>
+          <div class="card-corner br">+</div>
+          
+          <div class="card-header">
+            <span class="card-id">ID: PROFILE_SPEC</span>
+            <span class="card-status">ACTIVE</span>
+          </div>
+
+          <h2 class="hero-headline">
+            COMPUTER SCIENCE ENGINEER,<br>
+            SYSTEMS TINKERER &amp; BUILDER
+          </h2>
+          
+          <p class="hero-bio">
+            I am Akash Majumdar, a Computer Science Engineering student from India passionate about software engineering, operating system internals, hardware mechanics, and low-level computing. I combine pragmatic system architecture with a relentless curiosity for how bits move across silicon.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="cad-btn cad-btn-primary">[ 03_VIEW_PROJECTS &rarr; ]</a>
+            <a href="#contact" class="cad-btn">[ 05_DISPATCH_MESSAGE &rarr; ]</a>
+            <a href="https://github.com/akm7622" target="_blank" rel="noopener noreferrer" class="cad-btn">[ GITHUB_REPO &nearr; ]</a>
+          </div>
+        </div>
+
+        <div class="hero-specs cad-card">
+          <div class="card-corner tl">+</div>
+          <div class="card-corner tr">+</div>
+          <div class="card-corner bl">+</div>
+          <div class="card-corner br">+</div>
+
+          <div class="card-header">
+            <span class="card-id">SCHEMATIC: SYSTEM_SPECS</span>
+            <span class="card-hash">#REV-2026.11</span>
+          </div>
+
+          <dl class="spec-list">
+            <div class="spec-row">
+              <dt class="spec-term">ACADEMIC_PATH</dt>
+              <dd class="spec-desc">B.Tech Computer Science &amp; Engineering</dd>
+            </div>
+            <div class="spec-row">
+              <dt class="spec-term">CORE_DOMAINS</dt>
+              <dd class="spec-desc">Systems Dev, Full-Stack Web, Low-Level Architecture</dd>
+            </div>
+            <div class="spec-row">
+              <dt class="spec-term">OS_ENVIRONMENT</dt>
+              <dd class="spec-desc">Linux / POSIX Toolchains / Windows</dd>
+            </div>
+            <div class="spec-row">
+              <dt class="spec-term">PRIMARY_TOOLS</dt>
+              <dd class="spec-desc">GCC, Clang, Git, Python 3, Node, GDB, Make</dd>
+            </div>
+            <div class="spec-row">
+              <dt class="spec-term">AFFILIATION_REPO</dt>
+              <dd class="spec-desc"><a href="https://github.com/akm7622" target="_blank" rel="noopener noreferrer" class="cad-link">github.com/akm7622</a></dd>
+            </div>
+            <div class="spec-row">
+              <dt class="spec-term">PASSIONS</dt>
+              <dd class="spec-desc">Kernel tinkering, hardware diagnostics, anime, gaming</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS MATRIX SECTION -->
+    <section id="skills" class="cad-section">
+      <div class="section-tag">[ SECTION // 02.00 ] &mdash; TECHNICAL CAPABILITIES MATRIX</div>
+      
+      <div class="matrix-grid">
+        <!-- Matrix Column 1: Languages -->
+        <div class="matrix-card cad-card">
+          <div class="card-corner tl">+</div>
+          <div class="card-corner tr">+</div>
+          <div class="card-corner bl">+</div>
+          <div class="card-corner br">+</div>
+          <div class="card-header">
+            <span class="card-id">MATRIX_01</span>
+            <span class="card-title">LANGUAGES &amp; RUNTIMES</span>
+          </div>
+          <div class="table-wrap">
+            <table class="cad-table">
+              <thead>
+                <tr>
+                  <th>MODULE</th>
+                  <th>SPEC / USE</th>
+                  <th>PROFICIENCY</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="code-font">C</td>
+                  <td>Systems &amp; Memory Programming</td>
+                  <td><span class="meter">[||||||||--]</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">C++</td>
+                  <td>Modern OOP, STL, Benchmarking</td>
+                  <td><span class="meter">[|||||||---]</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">Python</td>
+                  <td>Scripting, Backend, Automation</td>
+                  <td><span class="meter">[|||||||||-]</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">JavaScript</td>
+                  <td>DOM APIs, Node.js, Frontend</td>
+                  <td><span class="meter">[||||||||--]</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">HTML5 / CSS3</td>
+                  <td>Semantic Grid, Strict Layouts</td>
+                  <td><span class="meter">[|||||||||-]</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">SQL</td>
+                  <td>Relational Schema &amp; Queries</td>
+                  <td><span class="meter">[|||||||---]</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Matrix Column 2: Systems & Low-Level -->
+        <div class="matrix-card cad-card">
+          <div class="card-corner tl">+</div>
+          <div class="card-corner tr">+</div>
+          <div class="card-corner bl">+</div>
+          <div class="card-corner br">+</div>
+          <div class="card-header">
+            <span class="card-id">MATRIX_02</span>
+            <span class="card-title">SYSTEMS &amp; LOW-LEVEL</span>
+          </div>
+          <div class="table-wrap">
+            <table class="cad-table">
+              <thead>
+                <tr>
+                  <th>DOMAIN</th>
+                  <th>DESCRIPTION</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="code-font">OS Tinkering</td>
+                  <td>Kernel bootloaders, x86 architecture, POSIX</td>
+                  <td><span class="status-badge">EXPLORING</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">Memory Mgmt</td>
+                  <td>Pointers, heap allocation, valgrind checks</td>
+                  <td><span class="status-badge">STABLE</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">Hardware Specs</td>
+                  <td>CPU pipelines, bus topologies, board IO</td>
+                  <td><span class="status-badge">STABLE</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">Shell &amp; POSIX</td>
+                  <td>Bash automation, pipes, core utilities</td>
+                  <td><span class="status-badge">VERIFIED</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">Build Systems</td>
+                  <td>Makefiles, compiler flags, linkers</td>
+                  <td><span class="status-badge">VERIFIED</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Matrix Column 3: Development Tools & Infrastructure -->
+        <div class="matrix-card cad-card">
+          <div class="card-corner tl">+</div>
+          <div class="card-corner tr">+</div>
+          <div class="card-corner bl">+</div>
+          <div class="card-corner br">+</div>
+          <div class="card-header">
+            <span class="card-id">MATRIX_03</span>
+            <span class="card-title">DEV ENVIRONMENT &amp; DEPLOY</span>
+          </div>
+          <div class="table-wrap">
+            <table class="cad-table">
+              <thead>
+                <tr>
+                  <th>TOOL</th>
+                  <th>WORKFLOW TARGET</th>
+                  <th>VERIFICATION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="code-font">Git / GitHub</td>
+                  <td>Version control, branch management, CI</td>
+                  <td><span class="status-badge">DAILY</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">Linux CLI</td>
+                  <td>Development terminal, diagnosis</td>
+                  <td><span class="status-badge">NATIVE</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">Render / PaaS</td>
+                  <td>Cloud deployment, live web staging</td>
+                  <td><span class="status-badge">DEPLOYED</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">GDB / Debuggers</td>
+                  <td>Fault tracing, stack inspection</td>
+                  <td><span class="status-badge">ACTIVE</span></td>
+                </tr>
+                <tr>
+                  <td class="code-font">VS Code &amp; Vim</td>
+                  <td>Editing, rapid syntax navigation</td>
+                  <td><span class="status-badge">ACTIVE</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SCHEMATICS SECTION -->
+    <section id="projects" class="cad-section">
+      <div class="section-tag">[ SECTION // 03.00 ] &mdash; PROJECT SCHEMATICS &amp; DIRECTORY</div>
+
+      <!-- FILTER CONTROLS -->
+      <div class="filter-bar">
+        <span class="filter-label">FILTER_BY_DISCIPLINE:</span>
+        <div class="filter-buttons" role="tablist">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">[ ALL (4) ]</button>
+          <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">[ WEB_APPS (1) ]</button>
+          <button class="filter-btn" data-filter="systems" role="tab" aria-selected="false">[ SYSTEMS_DEV (2) ]</button>
+          <button class="filter-btn" data-filter="hardware" role="tab" aria-selected="false">[ HARDWARE_IOT (1) ]</button>
+        </div>
+      </div>
+
+      <!-- PROJECTS SCHEMATIC GRID -->
+      <div class="projects-grid">
+        
+        <!-- PROJECT 1: KrishiRent -->
+        <article class="project-card cad-card" data-category="web">
+          <div class="card-corner tl">+</div>
+          <div class="card-corner tr">+</div>
+          <div class="card-corner bl">+</div>
+          <div class="card-corner br">+</div>
+          
+          <div class="card-header">
+            <span class="card-id">PRJ-01 // PRODUCTION</span>
+            <span class="pill pill-live">LIVE DEPLOYMENT</span>
+          </div>
+
+          <h3 class="project-title">KrishiRent</h3>
+          
+          <div class="project-summary">
+            A peer-to-peer agricultural machinery rental platform created to empower rural farmers. It bridges owners of idle tractors, harvesters, and tools with farmers requiring machinery on rent, democratizing access to capital equipment.
+          </div>
+
+          <div class="project-metrics">
+            <div class="metric-item">
+              <span class="metric-key">TARGET:</span>
+              <span class="metric-val">Agritech / Resource Sharing</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-key">HOSTING:</span>
+              <span class="metric-val">Render Cloud PaaS</span>
+            </div>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Render</span>
+          </div>
+
+          <div class="project-links">
+            <a href="https://krishirent.onrender.com/" target="_blank" rel="noopener noreferrer" class="cad-btn cad-btn-primary">[ LAUNCH DEMO &nearr; ]</a>
+            <a href="https://github.com/akm7622" target="_blank" rel="noopener noreferrer" class="cad-btn">[ REPOSITORY &nearr; ]</a>
+          </div>
+        </article>
+
+        <!-- PROJECT 2: KernelOS Sandbox -->
+        <article class="project-card cad-card" data-category="systems">
+          <div class="card-corner tl">+</div>
+          <div class="card-corner tr">+</div>
+          <div class="card-corner bl">+</div>
+          <div class="card-corner br">+</div>
+
+          <div class="card-header">
+            <span class="card-id">PRJ-02 // CORE_DEV</span>
+            <span class="pill pill-rnd">ACTIVE R&amp;D</span>
+          </div>
+
+          <h3 class="project-title">KernelOS Sandbox</h3>
+          
+          <div class="project-summary">
+            An experimental hobby x86 bare-metal operating system kernel built from scratch to study low-level CPU execution. Implements a Multiboot header, 32/64-bit protected mode jump, GDT/IDT interrupt tables, and a custom VGA frame driver.
+          </div>
+
+          <div class="project-metrics">
+            <div class="metric-item">
+              <span class="metric-key">TARGET:</span>
+              <span class="metric-val">x86_64 Bare-Metal Architecture</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-key">RUNTIME:</span>
+              <span class="metric-val">QEMU / Native BIOS</span>
+            </div>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tag">C</span>
+            <span class="tag">x86 Assembly</span>
+            <span class="tag">QEMU</span>
+            <span class="tag">Linker Scripts</span>
+          </div>
+
+          <div class="project-links">
+            <a href="https://github.com/akm7622" target="_blank" rel="noopener noreferrer" class="cad-btn cad-btn-primary">[ VIEW SCHEMATICS &nearr; ]</a>
+            <a href="https://github.com/akm7622" target="_blank" rel="noopener noreferrer" class="cad-btn">[ REPOSITORY &nearr; ]</a>
+          </div>
+        </article>
+
+        <!-- PROJECT 3: TelemetryLink -->
+        <article class="project-card cad-card" data-category="hardware">
+          <div class="card-corner tl">+</div>
+          <div class="card-corner tr">+</div>
+          <div class="card-corner bl">+</div>
+          <div class="card-corner br">+</div>
+
+          <div class="card-header">
+            <span class="card-id">PRJ-03 // EMBEDDED</span>
+            <span class="pill pill-bench">BENCH TESTBED</span>
+          </div>
+
+          <h3 class="project-title">TelemetryLink Monitor</h3>
+          
+          <div class="project-summary">
+            Hardware-to-software serial telemetry pipeline streaming sensor readings, bus load, and voltage diagnostics from microcontroller test points into a real-time host terminal CLI with zero external dependencies.
+          </div>
+
+          <div class="project-metrics">
+            <div class="metric-item">
+              <span class="metric-key">TARGET:</span>
+              <span class="metric-val">Hardware Diagnostics &amp; UART</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-key">PROTOCOL:</span>
+              <span class="metric-val">Serial @ 115200 Baud</span>
+            </div>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tag">C++</span>
+            <span class="tag">Microcontrollers</span>
+            <span class="tag">Python</span>
+            <span class="tag">UART</span>
+          </div>
+
+          <div class="project-links">
+            <a href="https://github.com/akm7622" target="_blank" rel="noopener noreferrer" class="cad-btn cad-btn-primary">[ HARDWARE LOGS &nearr; ]</a>
+            <a href="https://github.com/akm7622" target="_blank" rel="noopener noreferrer" class="cad-btn">[ REPOSITORY &nearr; ]</a>
+          </div>
+        </article>
+
+        <!-- PROJECT 4: FastGraph C++ Engine -->
+        <article class="project-card cad-card" data-category="systems">
+          <div class="card-corner tl">+</div>
+          <div class="card-corner tr">+</div>
+          <div class="card-corner bl">+</div>
+          <div class="card-corner br">+</div>
+
+          <div class="card-header">
+            <span class="card-id">PRJ-04 // ALGORITHMIC</span>
+            <span class="pill pill-opt">OPTIMIZED</span>
+          </div>
+
+          <h3 class="project-title">FastGraph Engine</h3>
+          
+          <div class="project-summary">
+            Cache-friendly, memory-aligned geometric routing and Dijkstra/A* path traversal engine in C++20. Employs contiguous node layouts to minimize L1/L2 cache misses under dense network loads.
+          </div>
+
+          <div class="project-metrics">
+            <div class="metric-item">
+              <span class="metric-key">TARGET:</span>
+              <span class="metric-val">Algorithmic Performance</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-key">STANDARD:</span>
+              <span class="metric-val">ISO C++20</span>
+            </div>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tag">C++20</span>
+            <span class="tag">Data Structures</span>
+            <span class="tag">Valgrind</span>
+            <span class="tag">Make</span>
+          </div>
+
+          <div class="project-links">
+            <a href="https://github.com/akm7622" target="_blank" rel="noopener noreferrer" class="cad-btn cad-btn-primary">[ BENCHMARKS &nearr; ]</a>
+            <a href="https://github.com/akm7622" target="_blank" rel="noopener noreferrer" class="cad-btn">[ REPOSITORY &nearr; ]</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- LOGS / EXPERIENCE CHRONOLOGY SECTION -->
+    <section id="experience" class="cad-section">
+      <div class="section-tag">[ SECTION // 04.00 ] &mdash; CHRONOLOGICAL LOGS &amp; EDUCATION</div>
+
+      <div class="cad-card">
+        <div class="card-corner tl">+</div>
+        <div class="card-corner tr">+</div>
+        <div class="card-corner bl">+</div>
+        <div class="card-corner br">+</div>
+
+        <div class="card-header">
+          <span class="card-id">SYSTEM_LOG // MILESTONES</span>
+          <span class="card-hash">TIMELINE: 2024 &mdash; PRESENT</span>
+        </div>
+
+        <div class="timeline-list">
+          <div class="timeline-entry">
+            <div class="timeline-timecode">[ 2024 &mdash; PRESENT ]</div>
+            <div class="timeline-body">
+              <h4 class="timeline-role">B.Tech in Computer Science &amp; Engineering</h4>
+              <div class="timeline-inst">Undergraduate Degree &bull; India</div>
+              <p class="timeline-desc">
+                Focusing on core computing foundations: Data Structures &amp; Algorithms, Computer Organization &amp; Architecture, Operating Systems, Database Management Systems, and Object-Oriented Software Engineering.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-entry">
+            <div class="timeline-timecode">[ 2025 ]</div>
+            <div class="timeline-body">
+              <h4 class="timeline-role">Lead Developer // KrishiRent Platform</h4>
+              <div class="timeline-inst">Web Infrastructure &amp; Cloud Deployment</div>
+              <p class="timeline-desc">
+                Designed and rolled out the full-stack architecture for agricultural equipment rental, managing frontend user flow, asset registration catalog, and automated cloud hosting on Render.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-entry">
+            <div class="timeline-timecode">[ 2024 &mdash; CONTINUOUS ]</div>
+            <div class="timeline-body">
+              <h4 class="timeline-role">Systems Tinkerer &amp; Open Source Explorer</h4>
+              <div class="timeline-inst">Independent Research &bull; GitHub</div>
+              <p class="timeline-desc">
+                Actively exploring POSIX APIs, kernel development methodologies, bare-metal boot sequences, hardware metrics, and crafting clean, high-efficiency tools.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISPATCH / CONTACT TERMINAL SECTION -->
+    <section id="contact" class="cad-section">
+      <div class="section-tag">[ SECTION // 05.00 ] &mdash; COMMUNICATION DISPATCH &amp; UPLINK</div>
+
+      <div class="contact-grid">
+        <!-- Direct Uplink Spec Card -->
+        <div class="cad-card">
+          <div class="card-corner tl">+</div>
+          <div class="card-corner tr">+</div>
+          <div class="card-corner bl">+</div>
+          <div class="card-corner br">+</div>
+
+          <div class="card-header">
+            <span class="card-id">COMM_PORT: DIRECT_CONNECT</span>
+            <span class="card-status">READY</span>
+          </div>
+
+          <h3 class="contact-heading">INITIATE TRANSMISSION</h3>
+          <p class="contact-intro">
+            Have an interesting project, low-level technical challenge, collaboration, or software opportunity? Dispatch a transmission directly or reach out via external channels.
+          </p>
+
+          <div class="contact-channel">
+            <div class="channel-label">ELECTRONIC_MAIL:</div>
+            <div class="channel-action-row">
+              <span id="email-address-text" class="channel-address">akash03082006@gmail.com</span>
+              <button id="copy-email-btn" class="cad-btn cad-btn-sm" aria-label="Copy email address to clipboard">
+                [ COPY_ADDR ]
+              </button>
+            </div>
+            <div id="copy-feedback" class="copy-feedback" aria-live="polite"></div>
+          </div>
+
+          <div class="social-links-grid">
+            <a href="https://github.com/akm7622" target="_blank" rel="noopener noreferrer" class="social-link-card">
+              <span class="link-label">GITHUB</span>
+              <span class="link-val">@akm7622 &nearr;</span>
+            </a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-link-card">
+              <span class="link-label">LINKEDIN</span>
+              <span class="link-val">Akash Majumdar &nearr;</span>
+            </a>
+            <a href="mailto:akash03082006@gmail.com" class="social-link-card">
+              <span class="link-label">MAILTO</span>
+              <span class="link-val">Direct Client &nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Dispatch Form -->
+        <div class="cad-card">
+          <div class="card-corner tl">+</div>
+          <div class="card-corner tr">+</div>
+          <div class="card-corner bl">+</div>
+          <div class="card-corner br">+</div>
+
+          <div class="card-header">
+            <span class="card-id">DISPATCH_PAYLOAD</span>
+            <span class="card-hash">STATUS: WAITING_INPUT</span>
+          </div>
+
+          <form id="dispatch-form" class="cad-form" action="mailto:akash03082006@gmail.com" method="POST" enctype="text/plain">
+            <div class="form-group">
+              <label for="sender-name" class="form-label">[ TRANSMITTER_NAME ]</label>
+              <input type="text" id="sender-name" name="name" class="cad-input" placeholder="Your name or handle" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sender-email" class="form-label">[ RETURN_ADDRESS_EMAIL ]</label>
+              <input type="email" id="sender-email" name="email" class="cad-input" placeholder="name@domain.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sender-subject" class="form-label">[ TRANSMISSION_SUBJECT ]</label>
+              <input type="text" id="sender-subject" name="subject" class="cad-input" placeholder="Project inquiry / Systems discussion" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sender-message" class="form-label">[ MESSAGE_PAYLOAD ]</label>
+              <textarea id="sender-message" name="message" class="cad-textarea" rows="4" placeholder="Enter transmission payload..." required></textarea>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="cad-btn cad-btn-primary">[ TRANSMIT_PAYLOAD &rarr; ]</button>
+              <button type="reset" class="cad-btn">[ CLEAR ]</button>
+            </div>
+            <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BLUEPRINT SPECIFICATION FOOTER -->
+  <footer class="cad-footer">
+    <div class="footer-container">
+      <div class="footer-spec">
+        <span class="footer-title">SPECIFICATION DOSSIER &bull; V2.0</span>
+        <span class="footer-disclaimer">
+          STRICT GEOMETRIC ARCHITECTURE &bull; ZERO ROUNDED CORNERS &bull; ZERO GRADIENTS &bull; ZERO GLASSMORPHISM
+        </span>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 AKASH MAJUMDAR &bull; HOSTED ON GITHUB PAGES &bull; <a href="https://github.com/akm7622/akm7622.github.io" class="cad-link" target="_blank" rel="noopener noreferrer">SOURCE_CODE</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

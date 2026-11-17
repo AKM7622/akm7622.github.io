@@ -1,0 +1,1073 @@
+/* ==========================================================================
+   TECHNICAL BLUEPRINT PORTFOLIO — GEOMETRIC SPECIFICATION
+   Akash Majumdar (akm7622.github.io)
+   CONSTRAINTS ENFORCED:
+   1. Zero rounded corners (border-radius: 0 !important)
+   2. Zero glassmorphism (backdrop-filter: none !important)
+   3. Zero gradients (flat solid colors only, no linear/radial/conic gradients)
+   4. Pure Monospace Typography (JetBrains Mono)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   DESIGN TOKENS & COLOR SCHEME (modern-web-guidance compliant)
+   -------------------------------------------------------------------------- */
+:root {
+  /* System font stack: Pure Monospace */
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'Cascadia Code', 'SF Mono', Consolas, monospace;
+
+  /* Default Color Scheme: Dark Technical Drafting Board */
+  color-scheme: light dark;
+
+  /* Palette: Dark Drafting Board (Default) */
+  --bg-canvas-dark: #090b0e;
+  --bg-surface-dark: #10141b;
+  --bg-elevated-dark: #161b24;
+  --bg-highlight-dark: #1d2430;
+  
+  --border-cad-dark: #242c38;
+  --border-strong-dark: #3a475a;
+  --border-accent-dark: #00f0ff;
+
+  --text-main-dark: #f0f6fc;
+  --text-muted-dark: #8b949e;
+  --text-dim-dark: #546274;
+
+  --accent-cyan-dark: #00f0ff;
+  --accent-cyan-contrast-dark: #000000;
+  --status-green-dark: #00ff88;
+  --status-amber-dark: #ffb703;
+
+  /* Palette: Light Blueprint Paper */
+  --bg-canvas-light: #f5f7fa;
+  --bg-surface-light: #ffffff;
+  --bg-elevated-light: #eaeff5;
+  --bg-highlight-light: #dfe6ee;
+
+  --border-cad-light: #cbd5e1;
+  --border-strong-light: #94a3b8;
+  --border-accent-light: #0284c7;
+
+  --text-main-light: #0f172a;
+  --text-muted-light: #475569;
+  --text-dim-light: #94a3b8;
+
+  --accent-cyan-light: #0284c7;
+  --accent-cyan-contrast-light: #ffffff;
+  --status-green-light: #16a34a;
+  --status-amber-light: #d97706;
+
+  /* Resolved Adaptive Tokens (fallback + light-dark) */
+  --bg-canvas: var(--bg-canvas-dark);
+  --bg-surface: var(--bg-surface-dark);
+  --bg-elevated: var(--bg-elevated-dark);
+  --bg-highlight: var(--bg-highlight-dark);
+
+  --border-cad: var(--border-cad-dark);
+  --border-strong: var(--border-strong-dark);
+  --border-accent: var(--border-accent-dark);
+
+  --text-main: var(--text-main-dark);
+  --text-muted: var(--text-muted-dark);
+  --text-dim: var(--text-dim-dark);
+
+  --accent-cad: var(--accent-cyan-dark);
+  --accent-contrast: var(--accent-cyan-contrast-dark);
+  --status-green: var(--status-green-dark);
+  --status-amber: var(--status-amber-dark);
+
+  /* Modern light-dark resolution when supported */
+  @supports (color: light-dark(#fff, #000)) {
+    --bg-canvas: light-dark(var(--bg-canvas-light), var(--bg-canvas-dark));
+    --bg-surface: light-dark(var(--bg-surface-light), var(--bg-surface-dark));
+    --bg-elevated: light-dark(var(--bg-elevated-light), var(--bg-elevated-dark));
+    --bg-highlight: light-dark(var(--bg-highlight-light), var(--bg-highlight-dark));
+
+    --border-cad: light-dark(var(--border-cad-light), var(--border-cad-dark));
+    --border-strong: light-dark(var(--border-strong-light), var(--border-strong-dark));
+    --border-accent: light-dark(var(--border-accent-light), var(--border-accent-dark));
+
+    --text-main: light-dark(var(--text-main-light), var(--text-main-dark));
+    --text-muted: light-dark(var(--text-muted-light), var(--text-muted-dark));
+    --text-dim: light-dark(var(--text-dim-light), var(--text-dim-dark));
+
+    --accent-cad: light-dark(var(--accent-cyan-light), var(--accent-cyan-dark));
+    --accent-contrast: light-dark(var(--accent-cyan-contrast-light), var(--accent-cyan-contrast-dark));
+    --status-green: light-dark(var(--status-green-light), var(--status-green-dark));
+    --status-amber: light-dark(var(--status-amber-light), var(--status-amber-dark));
+  }
+
+  /* Spacing Scale */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Custom Scrollbar */
+  scrollbar-color: var(--border-strong) var(--bg-canvas);
+  scrollbar-width: thin;
+}
+
+/* Explicit Meta Theme Overrides */
+:root:has(> head > meta[name="color-scheme"][content="dark"]) {
+  color-scheme: dark;
+  --bg-canvas: var(--bg-canvas-dark);
+  --bg-surface: var(--bg-surface-dark);
+  --bg-elevated: var(--bg-elevated-dark);
+  --bg-highlight: var(--bg-highlight-dark);
+  --border-cad: var(--border-cad-dark);
+  --border-strong: var(--border-strong-dark);
+  --border-accent: var(--border-accent-dark);
+  --text-main: var(--text-main-dark);
+  --text-muted: var(--text-muted-dark);
+  --text-dim: var(--text-dim-dark);
+  --accent-cad: var(--accent-cyan-dark);
+  --accent-contrast: var(--accent-cyan-contrast-dark);
+  --status-green: var(--status-green-dark);
+  --status-amber: var(--status-amber-dark);
+}
+
+:root:has(> head > meta[name="color-scheme"][content="light"]) {
+  color-scheme: light;
+  --bg-canvas: var(--bg-canvas-light);
+  --bg-surface: var(--bg-surface-light);
+  --bg-elevated: var(--bg-elevated-light);
+  --bg-highlight: var(--bg-highlight-light);
+  --border-cad: var(--border-cad-light);
+  --border-strong: var(--border-strong-light);
+  --border-accent: var(--border-accent-light);
+  --text-main: var(--text-main-light);
+  --text-muted: var(--text-muted-light);
+  --text-dim: var(--text-dim-light);
+  --accent-cad: var(--accent-cyan-light);
+  --accent-contrast: var(--accent-cyan-contrast-light);
+  --status-green: var(--status-green-light);
+  --status-amber: var(--status-amber-light);
+}
+
+/* --------------------------------------------------------------------------
+   STRICT GEOMETRIC RESET & CONSTRAINTS
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+  line-height: 1.5;
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent-cad);
+  color: var(--accent-contrast);
+}
+
+/* --------------------------------------------------------------------------
+   TOP TELEMETRY BAR
+   -------------------------------------------------------------------------- */
+.telemetry-bar {
+  width: 100%;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-cad);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.telemetry-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6px var(--space-md);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.telemetry-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.telemetry-status-dot {
+  color: var(--status-green);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.telemetry-label {
+  color: var(--text-dim);
+}
+
+.telemetry-val {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.telemetry-controls {
+  margin-left: auto;
+}
+
+/* --------------------------------------------------------------------------
+   HEADER & HUD NAVIGATION
+   -------------------------------------------------------------------------- */
+.cad-header {
+  width: 100%;
+  background-color: var(--bg-surface);
+  border-bottom: 2px solid var(--border-cad);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.callsign {
+  font-size: 0.72rem;
+  color: var(--accent-cad);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.brand-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-main);
+  text-transform: uppercase;
+}
+
+.cad-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 0;
+  border: 1px solid var(--border-cad);
+}
+
+.nav-list li {
+  border-right: 1px solid var(--border-cad);
+}
+
+.nav-list li:last-child {
+  border-right: none;
+}
+
+.nav-link {
+  display: block;
+  padding: 8px 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  background-color: var(--bg-surface);
+  transition: none;
+}
+
+.nav-num {
+  color: var(--accent-cad);
+  margin-right: 4px;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  background-color: var(--accent-cad);
+  color: var(--accent-contrast);
+  outline: none;
+}
+
+.nav-link:hover .nav-num,
+.nav-link:focus-visible .nav-num {
+  color: var(--accent-contrast);
+}
+
+.key-hints {
+  display: flex;
+  gap: 6px;
+}
+
+.key-badge {
+  padding: 4px 8px;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-cad);
+  color: var(--text-dim);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+/* --------------------------------------------------------------------------
+   MAIN LAYOUT & SECTIONS
+   -------------------------------------------------------------------------- */
+.cad-main {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  flex: 1;
+}
+
+.cad-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  scroll-margin-top: 60px;
+}
+
+.section-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent-cad);
+  border-left: 3px solid var(--accent-cad);
+  padding-left: var(--space-xs);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   GEOMETRIC CARDS & CORNER CROSSHAIRS
+   -------------------------------------------------------------------------- */
+.cad-card {
+  position: relative;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-cad);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Corner Crosshair Markers */
+.card-corner {
+  position: absolute;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: var(--accent-cad);
+  font-weight: 700;
+  pointer-events: none;
+  user-select: none;
+}
+
+.card-corner.tl { top: -6px; left: -5px; }
+.card-corner.tr { top: -6px; right: -5px; }
+.card-corner.bl { bottom: -6px; left: -5px; }
+.card-corner.br { bottom: -6px; right: -5px; }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-cad);
+  padding-bottom: var(--space-xs);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card-id {
+  color: var(--accent-cad);
+  font-weight: 700;
+}
+
+.card-status {
+  color: var(--status-green);
+  font-weight: 700;
+}
+
+.card-hash {
+  color: var(--text-dim);
+}
+
+.card-title {
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 0.05em;
+}
+
+/* --------------------------------------------------------------------------
+   HERO / PROFILE GRID
+   -------------------------------------------------------------------------- */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-md);
+}
+
+.hero-headline {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.03em;
+  color: var(--text-main);
+}
+
+.hero-bio {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+}
+
+/* Specification Dictionary */
+.spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: 0.8rem;
+}
+
+.spec-row {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border-cad);
+  padding-bottom: var(--space-xs);
+  gap: 2px;
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.spec-term {
+  color: var(--text-dim);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.spec-desc {
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   SKILLS & ARCHITECTURE MATRIX
+   -------------------------------------------------------------------------- */
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.cad-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  text-align: left;
+}
+
+.cad-table th {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-cad);
+  padding: 8px 10px;
+  color: var(--text-dim);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cad-table td {
+  border: 1px solid var(--border-cad);
+  padding: 8px 10px;
+  color: var(--text-muted);
+  vertical-align: middle;
+}
+
+.cad-table tr:hover td {
+  background-color: var(--bg-highlight);
+  color: var(--text-main);
+}
+
+.code-font {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.meter {
+  color: var(--accent-cad);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid var(--border-cad);
+  background-color: var(--bg-elevated);
+  color: var(--text-main);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+}
+
+/* --------------------------------------------------------------------------
+   PROJECTS DIRECTORY & FILTERING
+   -------------------------------------------------------------------------- */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-cad);
+  padding: var(--space-xs) var(--space-md);
+}
+
+.filter-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.filter-btn {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-cad);
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background-color: var(--bg-elevated);
+  color: var(--text-main);
+  border-color: var(--border-strong);
+}
+
+.filter-btn.active {
+  background-color: var(--accent-cad);
+  color: var(--accent-contrast);
+  border-color: var(--accent-cad);
+  font-weight: 700;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.project-card {
+  transition: none;
+}
+
+.project-card[data-hidden="true"] {
+  display: none !important;
+}
+
+.project-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-main);
+}
+
+.project-summary {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.project-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid var(--border-cad);
+  border-bottom: 1px solid var(--border-cad);
+  padding: var(--space-xs) 0;
+  font-size: 0.76rem;
+}
+
+.metric-item {
+  display: flex;
+  gap: 8px;
+}
+
+.metric-key {
+  color: var(--text-dim);
+  font-weight: 700;
+  min-width: 75px;
+}
+
+.metric-val {
+  color: var(--text-main);
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-cad);
+  color: var(--text-main);
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: auto;
+  padding-top: var(--space-xs);
+}
+
+/* Status Pills */
+.pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border: 1px solid currentColor;
+}
+
+.pill-live {
+  color: var(--status-green);
+  border-color: var(--status-green);
+}
+
+.pill-rnd {
+  color: var(--accent-cad);
+  border-color: var(--accent-cad);
+}
+
+.pill-bench {
+  color: var(--status-amber);
+  border-color: var(--status-amber);
+}
+
+.pill-opt {
+  color: var(--text-main);
+  border-color: var(--border-strong);
+}
+
+/* --------------------------------------------------------------------------
+   CHRONOLOGICAL LOGS & TIMELINE
+   -------------------------------------------------------------------------- */
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.timeline-entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-md);
+  border-bottom: 1px solid var(--border-cad);
+  padding-bottom: var(--space-md);
+}
+
+.timeline-entry:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.timeline-timecode {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-cad);
+  letter-spacing: 0.06em;
+}
+
+.timeline-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timeline-role {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.timeline-inst {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.timeline-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   CONTACT TERMINAL & DISPATCH
+   -------------------------------------------------------------------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-md);
+}
+
+.contact-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-main);
+}
+
+.contact-intro {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.contact-channel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-cad);
+  padding: var(--space-md);
+}
+
+.channel-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+.channel-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.channel-address {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  font-weight: 700;
+  word-break: break-all;
+}
+
+.copy-feedback {
+  font-size: 0.74rem;
+  color: var(--status-green);
+  font-weight: 700;
+  min-height: 1.2em;
+}
+
+.social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xs);
+}
+
+.social-link-card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid var(--border-cad);
+  background-color: var(--bg-surface);
+  text-decoration: none;
+  gap: 4px;
+}
+
+.social-link-card:hover {
+  background-color: var(--accent-cad);
+  border-color: var(--accent-cad);
+}
+
+.social-link-card:hover .link-label,
+.social-link-card:hover .link-val {
+  color: var(--accent-contrast);
+}
+
+.link-label {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.link-val {
+  font-size: 0.78rem;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* Dispatch Form */
+.cad-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+.cad-input,
+.cad-textarea {
+  width: 100%;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-cad);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 8px 12px;
+  outline: none;
+}
+
+.cad-input:focus,
+.cad-textarea:focus {
+  border-color: var(--accent-cad);
+  background-color: var(--bg-surface);
+}
+
+.form-submit-row {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.form-feedback {
+  font-size: 0.78rem;
+  min-height: 1.2em;
+  color: var(--status-green);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   BUTTONS & LINKS
+   -------------------------------------------------------------------------- */
+.cad-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-cad);
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cad-btn:hover,
+.cad-btn:focus-visible {
+  background-color: var(--accent-cad);
+  color: var(--accent-contrast);
+  border-color: var(--accent-cad);
+  outline: none;
+}
+
+.cad-btn-primary {
+  background-color: var(--bg-elevated);
+  border-color: var(--border-strong);
+  color: var(--accent-cad);
+  font-weight: 700;
+}
+
+.cad-btn-primary:hover,
+.cad-btn-primary:focus-visible {
+  background-color: var(--accent-cad);
+  color: var(--accent-contrast);
+  border-color: var(--accent-cad);
+}
+
+.cad-btn-sm {
+  padding: 5px 10px;
+  font-size: 0.72rem;
+}
+
+.cad-btn-xs {
+  padding: 3px 8px;
+  font-size: 0.68rem;
+}
+
+.cad-link {
+  color: var(--accent-cad);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-cad);
+}
+
+.cad-link:hover {
+  background-color: var(--accent-cad);
+  color: var(--accent-contrast);
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER
+   -------------------------------------------------------------------------- */
+.cad-footer {
+  width: 100%;
+  border-top: 2px solid var(--border-cad);
+  background-color: var(--bg-surface);
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: 0.75rem;
+}
+
+.footer-spec {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  border-bottom: 1px solid var(--border-cad);
+  padding-bottom: var(--space-xs);
+}
+
+.footer-title {
+  color: var(--accent-cad);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.footer-disclaimer {
+  color: var(--text-dim);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+.footer-copy {
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE BREAKPOINTS (GEOMETRIC PRESERVATION)
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .matrix-grid {
+    grid-template-columns: 1fr;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .timeline-entry {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+  }
+}
+
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-list {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .nav-list li {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  .social-links-grid {
+    grid-template-columns: 1fr;
+  }
+  .telemetry-inner {
+    font-size: 0.7rem;
+  }
+}
